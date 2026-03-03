@@ -1047,6 +1047,133 @@ a:hover {
   transform: scale(1.05);
 }
 
+/* ── Events Marquee (Homepage) ── */
+.events-marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+  padding: 16px 0;
+}
+
+.events-marquee-track {
+  display: flex;
+  gap: 24px;
+  animation: eventsMarquee 30s linear infinite;
+  width: max-content;
+}
+
+.events-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.events-marquee.reverse .events-marquee-track {
+  animation: eventsMarqueeReverse 35s linear infinite;
+}
+
+@keyframes eventsMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes eventsMarqueeReverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.event-marquee-card {
+  background: linear-gradient(135deg, var(--arcade-surface) 0%, rgba(17,17,40,0.8) 100%);
+  border: 2px solid var(--arcade-border);
+  border-radius: 8px;
+  padding: 20px 28px;
+  min-width: 220px;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.event-marquee-card:hover {
+  border-color: var(--pac-yellow);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3), 0 0 15px rgba(255,230,0,0.1);
+}
+
+.event-marquee-card h3 {
+  font-family: var(--font-pixel);
+  font-size: 12px;
+  color: var(--text-primary);
+  margin: 10px 0 6px;
+  line-height: 1.4;
+}
+
+.event-marquee-card p {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: var(--pac-yellow);
+  text-shadow: 0 0 6px rgba(255,230,0,0.3);
+}
+
+.marquee-cat {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  padding: 3px 8px;
+  border-radius: 3px;
+  letter-spacing: 1px;
+}
+
+.marquee-cat.cultural {
+  background: rgba(255,0,255,0.15);
+  color: var(--neon-magenta);
+  border: 1px solid rgba(255,0,255,0.3);
+}
+.marquee-cat.technical {
+  background: rgba(0,255,255,0.15);
+  color: var(--ghost-cyan);
+  border: 1px solid rgba(0,255,255,0.3);
+}
+.marquee-cat.gaming {
+  background: rgba(255,0,0,0.15);
+  color: var(--ghost-red);
+  border: 1px solid rgba(255,0,0,0.3);
+}
+.marquee-cat.workshop {
+  background: rgba(255,184,82,0.15);
+  color: var(--ghost-orange);
+  border: 1px solid rgba(255,184,82,0.3);
+}
+
+/* ── View All Events Button ── */
+.btn-view-events {
+  display: inline-block;
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  color: var(--arcade-bg);
+  background: var(--pac-yellow);
+  padding: 16px 40px;
+  border-radius: 4px;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(255,230,0,0.3), 0 0 40px rgba(255,230,0,0.15);
+}
+
+.btn-view-events:hover {
+  background: var(--ghost-cyan);
+  color: var(--arcade-bg) !important;
+  box-shadow: 0 0 30px rgba(0,255,255,0.4), 0 0 60px rgba(0,255,255,0.2);
+  transform: translateY(-3px) scale(1.05);
+}
+
 /* ═══════════════════════════════════════
    VENUES SECTION
    ═══════════════════════════════════════ */
@@ -1150,6 +1277,73 @@ a:hover {
   display: inline-block;
   letter-spacing: 2px;
   text-shadow: 0 0 8px rgba(255, 230, 0, 0.3);
+}
+
+/* ── Venue Map ── */
+.venue-map-wrapper {
+  margin-top: 60px;
+}
+
+.map-heading {
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  color: var(--ghost-cyan);
+  text-align: center;
+  margin-bottom: 24px;
+  letter-spacing: 2px;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+}
+
+.map-heading span {
+  margin-right: 8px;
+}
+
+.map-frame {
+  position: relative;
+  border: 3px solid var(--ghost-cyan);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow:
+    0 0 20px rgba(0, 255, 255, 0.15),
+    0 0 40px rgba(0, 255, 255, 0.05),
+    inset 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.map-frame iframe {
+  display: block;
+  width: 100%;
+  height: 400px;
+}
+
+.map-overlay-scanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.08) 0px,
+    rgba(0, 0, 0, 0.08) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  z-index: 2;
+}
+
+.map-address {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-top: 16px;
+  letter-spacing: 1px;
+  line-height: 1.8;
+}
+
+.map-address span {
+  margin-right: 6px;
 }
 
 /* ═══════════════════════════════════════

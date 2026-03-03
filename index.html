@@ -167,299 +167,187 @@
         <p class="section-subtitle reveal">
           Choose your challenge. Each event is a new level to conquer!
         </p>
+      </div>
 
-        <!-- Category Filter -->
-        <div class="event-filters reveal">
-          <button class="filter-btn active" data-filter="all">ALL</button>
-          <button class="filter-btn" data-filter="cultural">CULTURAL</button>
-          <button class="filter-btn" data-filter="technical">TECHNICAL</button>
-          <button class="filter-btn" data-filter="gaming">GAMING</button>
-          <button class="filter-btn" data-filter="workshop">WORKSHOP</button>
-        </div>
-
-        <!-- Event Cards Grid -->
-        <div class="events-grid" id="eventsGrid">
-          <!-- Event 1 -->
-          <div class="event-card reveal" data-category="workshop">
-            <div class="card-header">
-              <span class="card-category">WORKSHOP</span>
-              <span class="card-price free">FREE</span>
-            </div>
-            <h3 class="card-title">Web Dev Workshop</h3>
-            <p class="card-desc">
-              Level up your coding skills in this hands-on web development
-              bootcamp.
-            </p>
-            <div class="card-details">
-              <span>📅 March 23, 2026</span>
-              <span>⏰ 9:30 AM</span>
-            </div>
-            <a href="#" class="card-btn">PRESS START →</a>
+      <!-- Events Marquee Row 1 (left to right) -->
+      <div class="events-marquee reveal">
+        <div class="events-marquee-track">
+          <div class="event-marquee-card" data-category="cultural">
+            <span class="marquee-cat cultural">CULTURAL</span>
+            <h3>La Couture</h3>
+            <p>₹40K PRIZE</p>
           </div>
-
-          <!-- Event 2 -->
-          <div class="event-card reveal" data-category="cultural">
-            <div class="card-header">
-              <span class="card-category">CULTURAL</span>
-              <span class="card-price">₹10K PRIZE</span>
-            </div>
-            <h3 class="card-title">MX - DY (Persona)</h3>
-            <p class="card-desc">
-              The ultimate personality showdown — charisma, talent, and style
-              collide.
-            </p>
-            <div class="card-details">
-              <span>📅 March 22, 2026</span>
-              <span>💰 Reg: ₹150</span>
-            </div>
-            <a href="#" class="card-btn">PRESS START →</a>
+          <div class="event-marquee-card" data-category="gaming">
+            <span class="marquee-cat gaming">GAMING</span>
+            <h3>Valorant</h3>
+            <p>₹3K PRIZE</p>
           </div>
-
-          <!-- Event 3 -->
-          <div class="event-card reveal" data-category="cultural">
-            <div class="card-header">
-              <span class="card-category">CULTURAL</span>
-              <span class="card-price">₹40K PRIZE</span>
-            </div>
-            <h3 class="card-title">La Couture</h3>
-            <p class="card-desc">
-              A spectacular fashion extravaganza — walk the ramp, own the stage.
-            </p>
-            <div class="card-details">
-              <span>📅 March 22, 2026</span>
-              <span>💰 Reg: ₹150/head</span>
-            </div>
-            <a href="#" class="card-btn">PRESS START →</a>
+          <div class="event-marquee-card" data-category="workshop">
+            <span class="marquee-cat workshop">WORKSHOP</span>
+            <h3>Web Dev Workshop</h3>
+            <p>FREE</p>
           </div>
-
-          <!-- Event 4 -->
-          <div class="event-card reveal" data-category="cultural">
-            <div class="card-header">
-              <span class="card-category">CULTURAL</span>
-              <span class="card-price">₹3K PRIZE</span>
-            </div>
-            <h3 class="card-title">Bloomer</h3>
-            <p class="card-desc">
-              Think you can talk without making sense? Blunder your way to
-              glory!
-            </p>
-            <div class="card-details">
-              <span>📅 March 23, 2026</span>
-              <span>💰 Reg: ₹150</span>
-            </div>
-            <a href="#" class="card-btn">PRESS START →</a>
+          <div class="event-marquee-card" data-category="cultural">
+            <span class="marquee-cat cultural">CULTURAL</span>
+            <h3>MX - DY (Persona)</h3>
+            <p>₹10K PRIZE</p>
           </div>
-
-          <!-- Event 5 -->
-          <div class="event-card reveal" data-category="cultural">
-            <div class="card-header">
-              <span class="card-category">CULTURAL</span>
-              <span class="card-price">₹5K PRIZE</span>
-            </div>
-            <h3 class="card-title">Beat The Spot</h3>
-            <p class="card-desc">
-              Spot choreography challenge — hear the beat, own the floor, no
-              prep needed!
-            </p>
-            <div class="card-details">
-              <span>📅 March 22, 2026</span>
-              <span>💰 Reg: ₹150</span>
-            </div>
-            <a href="#" class="card-btn">PRESS START →</a>
+          <div class="event-marquee-card" data-category="technical">
+            <span class="marquee-cat technical">TECHNICAL</span>
+            <h3>Innovation Zone</h3>
+            <p>₹50K+ PRIZES</p>
           </div>
-
-          <!-- Event 6 -->
-          <div class="event-card reveal" data-category="cultural">
-            <div class="card-header">
-              <span class="card-category">CULTURAL</span>
-              <span class="card-price">PRIZES TBD</span>
-            </div>
-            <h3 class="card-title">Groove (Solo Dance)</h3>
-            <p class="card-desc">
-              Solo dance showdown — light up the stage with your moves!
-            </p>
-            <div class="card-details">
-              <span>📅 March 22, 2026</span>
-              <span>💰 Reg: ₹100</span>
-            </div>
-            <a href="#" class="card-btn">PRESS START →</a>
+          <div class="event-marquee-card" data-category="gaming">
+            <span class="marquee-cat gaming">GAMING</span>
+            <h3>BGMI Tournament</h3>
+            <p>₹2.5K PRIZE</p>
           </div>
-
-          <!-- Event 7 -->
-          <div class="event-card reveal" data-category="cultural">
-            <div class="card-header">
-              <span class="card-category">CULTURAL</span>
-              <span class="card-price">₹5K PRIZE</span>
-            </div>
-            <h3 class="card-title">El Duo (Duet Dance)</h3>
-            <p class="card-desc">
-              Partner up and dominate the dance floor with synchronized moves!
-            </p>
-            <div class="card-details">
-              <span>📅 March 22, 2026</span>
-              <span>💰 Reg: ₹200</span>
-            </div>
-            <a href="#" class="card-btn">PRESS START →</a>
+          <div class="event-marquee-card" data-category="cultural">
+            <span class="marquee-cat cultural">CULTURAL</span>
+            <h3>Beat The Spot</h3>
+            <p>₹5K PRIZE</p>
           </div>
-
-          <!-- Event 8 -->
-          <div class="event-card reveal" data-category="cultural">
-            <div class="card-header">
-              <span class="card-category">CULTURAL</span>
-              <span class="card-price">₹5K PRIZE</span>
-            </div>
-            <h3 class="card-title">One Mic Stand</h3>
-            <p class="card-desc">
-              Got jokes? Grab the mic and prove you're the funniest in the
-              arena!
-            </p>
-            <div class="card-details">
-              <span>📅 March 22, 2026</span>
-              <span>💰 Reg: ₹150</span>
-            </div>
-            <a href="#" class="card-btn">PRESS START →</a>
+          <div class="event-marquee-card" data-category="cultural">
+            <span class="marquee-cat cultural">CULTURAL</span>
+            <h3>One Mic Stand</h3>
+            <p>₹5K PRIZE</p>
           </div>
-
-          <!-- Event 9 -->
-          <div class="event-card reveal" data-category="cultural">
-            <div class="card-header">
-              <span class="card-category">CULTURAL</span>
-              <span class="card-price">₹4K PRIZE</span>
-            </div>
-            <h3 class="card-title">JAM (Just A Minute)</h3>
-            <p class="card-desc">
-              Talk fast, think faster — 60 seconds to impress the judges!
-            </p>
-            <div class="card-details">
-              <span>📅 March 22, 2026</span>
-              <span>💰 Reg: ₹100</span>
-            </div>
-            <a href="#" class="card-btn">PRESS START →</a>
+          <!-- Duplicated for seamless loop -->
+          <div class="event-marquee-card" data-category="cultural">
+            <span class="marquee-cat cultural">CULTURAL</span>
+            <h3>La Couture</h3>
+            <p>₹40K PRIZE</p>
           </div>
-
-          <!-- Event 10 -->
-          <div class="event-card reveal" data-category="technical">
-            <div class="card-header">
-              <span class="card-category">TECHNICAL</span>
-              <span class="card-price">₹10K PRIZE</span>
-            </div>
-            <h3 class="card-title">Campus Ambassador</h3>
-            <p class="card-desc">
-              Represent your campus — lead, network, and earn exclusive rewards!
-            </p>
-            <div class="card-details">
-              <span>📅 Open Registration</span>
-              <span>🏆 Top Prizes</span>
-            </div>
-            <a href="#" class="card-btn">PRESS START →</a>
+          <div class="event-marquee-card" data-category="gaming">
+            <span class="marquee-cat gaming">GAMING</span>
+            <h3>Valorant</h3>
+            <p>₹3K PRIZE</p>
           </div>
-
-          <!-- Event 11 -->
-          <div class="event-card reveal" data-category="gaming">
-            <div class="card-header">
-              <span class="card-category">GAMING</span>
-              <span class="card-price">₹2.5K PRIZE</span>
-            </div>
-            <h3 class="card-title">BGMI Tournament</h3>
-            <p class="card-desc">
-              Squad up and battle for the chicken dinner in this epic
-              tournament!
-            </p>
-            <div class="card-details">
-              <span>📅 March 22-23</span>
-              <span>💰 Reg: ₹100/squad</span>
-            </div>
-            <a href="#" class="card-btn">PRESS START →</a>
+          <div class="event-marquee-card" data-category="workshop">
+            <span class="marquee-cat workshop">WORKSHOP</span>
+            <h3>Web Dev Workshop</h3>
+            <p>FREE</p>
           </div>
-
-          <!-- Event 12 -->
-          <div class="event-card reveal" data-category="gaming">
-            <div class="card-header">
-              <span class="card-category">GAMING</span>
-              <span class="card-price">₹3K PRIZE</span>
-            </div>
-            <h3 class="card-title">Valorant</h3>
-            <p class="card-desc">
-              5v5 tactical shooter showdown — prove your aim and strategy!
-            </p>
-            <div class="card-details">
-              <span>📅 March 22-23</span>
-              <span>💰 Reg: ₹300/team</span>
-            </div>
-            <a href="#" class="card-btn">PRESS START →</a>
+          <div class="event-marquee-card" data-category="cultural">
+            <span class="marquee-cat cultural">CULTURAL</span>
+            <h3>MX - DY (Persona)</h3>
+            <p>₹10K PRIZE</p>
           </div>
-
-          <!-- Event 13 -->
-          <div class="event-card reveal" data-category="gaming">
-            <div class="card-header">
-              <span class="card-category">GAMING</span>
-              <span class="card-price">₹3K PRIZE</span>
-            </div>
-            <h3 class="card-title">Call of Duty</h3>
-            <p class="card-desc">
-              Gear up soldiers! The ultimate FPS battleground awaits.
-            </p>
-            <div class="card-details">
-              <span>📅 March 22-23</span>
-              <span>💰 Reg: ₹300/team</span>
-            </div>
-            <a href="#" class="card-btn">PRESS START →</a>
+          <div class="event-marquee-card" data-category="technical">
+            <span class="marquee-cat technical">TECHNICAL</span>
+            <h3>Innovation Zone</h3>
+            <p>₹50K+ PRIZES</p>
           </div>
-
-          <!-- Event 14 -->
-          <div class="event-card reveal" data-category="gaming">
-            <div class="card-header">
-              <span class="card-category">GAMING</span>
-              <span class="card-price">PRIZES TBD</span>
-            </div>
-            <h3 class="card-title">e-Football</h3>
-            <p class="card-desc">
-              Virtual football battle — score goals, win glory on the digital
-              pitch!
-            </p>
-            <div class="card-details">
-              <span>📅 March 22-23</span>
-              <span>💰 Reg: ₹50</span>
-            </div>
-            <a href="#" class="card-btn">PRESS START →</a>
+          <div class="event-marquee-card" data-category="gaming">
+            <span class="marquee-cat gaming">GAMING</span>
+            <h3>BGMI Tournament</h3>
+            <p>₹2.5K PRIZE</p>
           </div>
-
-          <!-- Event 15 -->
-          <div class="event-card reveal" data-category="cultural">
-            <div class="card-header">
-              <span class="card-category">CULTURAL</span>
-              <span class="card-price">PRIZES TBD</span>
-            </div>
-            <h3 class="card-title">Battle of Bands</h3>
-            <p class="card-desc">
-              Unleash your inner rockstar — bands compete for the ultimate
-              crown!
-            </p>
-            <div class="card-details">
-              <span>📅 March 22, 2026</span>
-              <span>💰 Reg: ₹150/head</span>
-            </div>
-            <a href="#" class="card-btn">PRESS START →</a>
+          <div class="event-marquee-card" data-category="cultural">
+            <span class="marquee-cat cultural">CULTURAL</span>
+            <h3>Beat The Spot</h3>
+            <p>₹5K PRIZE</p>
           </div>
-
-          <!-- Event 16 -->
-          <div class="event-card reveal" data-category="technical">
-            <div class="card-header">
-              <span class="card-category">TECHNICAL</span>
-              <span class="card-price">₹50K+ PRIZES</span>
-            </div>
-            <h3 class="card-title">Innovation Zone</h3>
-            <p class="card-desc">
-              Build, hack, innovate — engineering challenges with massive prize
-              pools!
-            </p>
-            <div class="card-details">
-              <span>📅 March 22-23</span>
-              <span>🏆 Multiple Rounds</span>
-            </div>
-            <a href="#" class="card-btn">PRESS START →</a>
+          <div class="event-marquee-card" data-category="cultural">
+            <span class="marquee-cat cultural">CULTURAL</span>
+            <h3>One Mic Stand</h3>
+            <p>₹5K PRIZE</p>
           </div>
         </div>
+      </div>
+
+      <!-- Events Marquee Row 2 (right to left) -->
+      <div class="events-marquee reverse reveal">
+        <div class="events-marquee-track">
+          <div class="event-marquee-card" data-category="gaming">
+            <span class="marquee-cat gaming">GAMING</span>
+            <h3>Call of Duty</h3>
+            <p>₹3K PRIZE</p>
+          </div>
+          <div class="event-marquee-card" data-category="cultural">
+            <span class="marquee-cat cultural">CULTURAL</span>
+            <h3>El Duo (Duet Dance)</h3>
+            <p>₹5K PRIZE</p>
+          </div>
+          <div class="event-marquee-card" data-category="cultural">
+            <span class="marquee-cat cultural">CULTURAL</span>
+            <h3>Bloomer</h3>
+            <p>₹3K PRIZE</p>
+          </div>
+          <div class="event-marquee-card" data-category="gaming">
+            <span class="marquee-cat gaming">GAMING</span>
+            <h3>e-Football</h3>
+            <p>PRIZES TBD</p>
+          </div>
+          <div class="event-marquee-card" data-category="technical">
+            <span class="marquee-cat technical">TECHNICAL</span>
+            <h3>Campus Ambassador</h3>
+            <p>₹10K PRIZE</p>
+          </div>
+          <div class="event-marquee-card" data-category="cultural">
+            <span class="marquee-cat cultural">CULTURAL</span>
+            <h3>Groove (Solo Dance)</h3>
+            <p>PRIZES TBD</p>
+          </div>
+          <div class="event-marquee-card" data-category="cultural">
+            <span class="marquee-cat cultural">CULTURAL</span>
+            <h3>JAM (Just A Minute)</h3>
+            <p>₹4K PRIZE</p>
+          </div>
+          <div class="event-marquee-card" data-category="cultural">
+            <span class="marquee-cat cultural">CULTURAL</span>
+            <h3>Battle of Bands</h3>
+            <p>PRIZES TBD</p>
+          </div>
+          <!-- Duplicated for seamless loop -->
+          <div class="event-marquee-card" data-category="gaming">
+            <span class="marquee-cat gaming">GAMING</span>
+            <h3>Call of Duty</h3>
+            <p>₹3K PRIZE</p>
+          </div>
+          <div class="event-marquee-card" data-category="cultural">
+            <span class="marquee-cat cultural">CULTURAL</span>
+            <h3>El Duo (Duet Dance)</h3>
+            <p>₹5K PRIZE</p>
+          </div>
+          <div class="event-marquee-card" data-category="cultural">
+            <span class="marquee-cat cultural">CULTURAL</span>
+            <h3>Bloomer</h3>
+            <p>₹3K PRIZE</p>
+          </div>
+          <div class="event-marquee-card" data-category="gaming">
+            <span class="marquee-cat gaming">GAMING</span>
+            <h3>e-Football</h3>
+            <p>PRIZES TBD</p>
+          </div>
+          <div class="event-marquee-card" data-category="technical">
+            <span class="marquee-cat technical">TECHNICAL</span>
+            <h3>Campus Ambassador</h3>
+            <p>₹10K PRIZE</p>
+          </div>
+          <div class="event-marquee-card" data-category="cultural">
+            <span class="marquee-cat cultural">CULTURAL</span>
+            <h3>Groove (Solo Dance)</h3>
+            <p>PRIZES TBD</p>
+          </div>
+          <div class="event-marquee-card" data-category="cultural">
+            <span class="marquee-cat cultural">CULTURAL</span>
+            <h3>JAM (Just A Minute)</h3>
+            <p>₹4K PRIZE</p>
+          </div>
+          <div class="event-marquee-card" data-category="cultural">
+            <span class="marquee-cat cultural">CULTURAL</span>
+            <h3>Battle of Bands</h3>
+            <p>PRIZES TBD</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- View All CTA -->
+      <div class="container" style="text-align: center; margin-top: 48px">
+        <a href="/events.html" class="btn-view-events reveal">
+          VIEW ALL EVENTS →
+        </a>
       </div>
     </section>
 
@@ -508,6 +396,32 @@
               skill-building workshops.
             </p>
             <div class="venue-level">LEVEL 4</div>
+          </div>
+        </div>
+
+        <!-- Venue Map -->
+        <div class="venue-map-wrapper reveal">
+          <h3 class="map-heading"><span>📍</span> LOCATE THE ARENA</h3>
+          <div class="map-frame">
+            <iframe
+              src="https://maps.google.com/maps?q=College+of+Engineering+Attingal,+Kerala&t=&z=17&ie=UTF8&iwloc=B&output=embed"
+              width="100%"
+              height="400"
+              style="
+                border: 0;
+                filter: saturate(0.3) brightness(0.7) contrast(1.3)
+                  hue-rotate(200deg);
+              "
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="College of Engineering Attingal Location"
+            ></iframe>
+            <div class="map-overlay-scanlines" aria-hidden="true"></div>
+          </div>
+          <div class="map-address">
+            <span>🏫</span> College of Engineering Attingal, Near Attingal Bus
+            Stand, Kerala - 695101
           </div>
         </div>
       </div>

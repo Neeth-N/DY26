@@ -1,0 +1,708 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events — Daksha Yanthra '26</title>
+    <meta
+      name="description"
+      content="Browse all events at Daksha Yanthra 2026 — Cultural, Technical, Gaming, and Workshops. Register now!"
+    />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <link rel="stylesheet" href="/style.css" />
+    <style>
+      /* ── Events Page Specific ── */
+      .events-page-hero {
+        padding: 120px 24px 60px;
+        text-align: center;
+        background: radial-gradient(
+          ellipse at 50% 50%,
+          #0d0d3a 0%,
+          var(--arcade-bg) 70%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+
+      .events-page-hero::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--maze-blue),
+          transparent
+        );
+      }
+
+      .events-page-title {
+        font-family: var(--font-pixel);
+        font-size: clamp(20px, 4vw, 40px);
+        color: var(--pac-yellow);
+        text-shadow:
+          0 0 4px rgba(255, 230, 0, 0.5),
+          0 0 12px rgba(255, 230, 0, 0.25);
+        margin-bottom: 16px;
+      }
+
+      .events-page-sub {
+        font-family: var(--font-retro);
+        font-size: 22px;
+        color: var(--text-secondary);
+        margin-bottom: 8px;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-pixel);
+        font-size: 10px;
+        color: var(--ghost-cyan) !important;
+        margin-bottom: 32px;
+        transition: all 0.3s ease;
+      }
+
+      .back-link:hover {
+        color: var(--pac-yellow) !important;
+        transform: translateX(-4px);
+      }
+
+      .events-page-body {
+        padding: 60px 0 100px;
+        min-height: 60vh;
+      }
+
+      /* Filters on events page */
+      .ep-filters {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 48px;
+      }
+
+      /* Events grid on events page */
+      .ep-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 28px;
+      }
+
+      .ep-card {
+        background: linear-gradient(
+          135deg,
+          var(--arcade-surface) 0%,
+          rgba(17, 17, 40, 0.8) 100%
+        );
+        border: 2px solid var(--arcade-border);
+        border-radius: 10px;
+        padding: 28px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s ease;
+      }
+
+      .ep-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 230, 0, 0.03),
+          transparent
+        );
+        transition: left 0.6s ease;
+      }
+
+      .ep-card:hover {
+        border-color: var(--pac-yellow);
+        transform: translateY(-6px);
+        box-shadow:
+          0 12px 40px rgba(0, 0, 0, 0.3),
+          0 0 25px rgba(255, 230, 0, 0.12);
+      }
+
+      .ep-card:hover::before {
+        left: 100%;
+      }
+
+      .ep-card.hidden {
+        display: none;
+      }
+
+      .ep-card-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+      }
+
+      .ep-badge {
+        font-family: var(--font-pixel);
+        font-size: 8px;
+        padding: 4px 10px;
+        border-radius: 3px;
+        letter-spacing: 1px;
+      }
+
+      .ep-badge.cultural {
+        background: rgba(255, 0, 255, 0.15);
+        color: var(--neon-magenta);
+        border: 1px solid rgba(255, 0, 255, 0.3);
+      }
+      .ep-badge.technical {
+        background: rgba(0, 255, 255, 0.15);
+        color: var(--ghost-cyan);
+        border: 1px solid rgba(0, 255, 255, 0.3);
+      }
+      .ep-badge.gaming {
+        background: rgba(255, 0, 0, 0.15);
+        color: var(--ghost-red);
+        border: 1px solid rgba(255, 0, 0, 0.3);
+      }
+      .ep-badge.workshop {
+        background: rgba(255, 184, 82, 0.15);
+        color: var(--ghost-orange);
+        border: 1px solid rgba(255, 184, 82, 0.3);
+      }
+
+      .ep-prize {
+        font-family: var(--font-pixel);
+        font-size: 9px;
+        color: var(--pac-yellow);
+        text-shadow: 0 0 8px rgba(255, 230, 0, 0.3);
+      }
+      .ep-prize.free {
+        color: #00ff00;
+        text-shadow: 0 0 8px rgba(0, 255, 0, 0.3);
+      }
+
+      .ep-card h3 {
+        font-family: var(--font-pixel);
+        font-size: 14px;
+        color: var(--text-primary);
+        margin-bottom: 12px;
+        line-height: 1.5;
+      }
+
+      .ep-card .desc {
+        font-size: 18px;
+        color: var(--text-secondary);
+        margin-bottom: 16px;
+        line-height: 1.7;
+      }
+
+      .ep-card .details {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        font-size: 16px;
+        color: var(--text-secondary);
+        margin-bottom: 20px;
+      }
+
+      .ep-card .card-btn {
+        display: inline-block;
+        font-family: var(--font-pixel);
+        font-size: 10px;
+        color: var(--arcade-bg);
+        background: var(--pac-yellow);
+        padding: 10px 20px;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        letter-spacing: 1px;
+        box-shadow: 0 0 10px rgba(255, 230, 0, 0.2);
+      }
+
+      .ep-card .card-btn:hover {
+        background: var(--ghost-cyan);
+        color: var(--arcade-bg) !important;
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        transform: scale(1.05);
+      }
+
+      /* ── Events Page Footer ── */
+      .ep-footer {
+        text-align: center;
+        padding: 40px 0;
+      }
+
+      .ep-footer a {
+        font-family: var(--font-pixel);
+        font-size: 10px;
+        color: var(--text-secondary);
+        letter-spacing: 2px;
+        transition: color 0.3s;
+      }
+
+      .ep-footer a:hover {
+        color: var(--pac-yellow);
+      }
+
+      @media (max-width: 768px) {
+        .ep-grid {
+          grid-template-columns: 1fr;
+        }
+        .events-page-hero {
+          padding: 100px 16px 40px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- CRT Scanline Overlay -->
+    <div class="crt-overlay" aria-hidden="true"></div>
+
+    <!-- ═══════════ NAVIGATION ═══════════ -->
+    <nav class="navbar" id="navbar">
+      <a href="/" class="nav-logo">
+        <img src="/logo.svg" alt="DY Logo" class="nav-logo-img" /> DY'26
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/">HOME</a></li>
+        <li><a href="/#about">ABOUT</a></li>
+        <li>
+          <a href="/events.html" style="color: var(--pac-yellow)">EVENTS</a>
+        </li>
+        <li><a href="/#venues">VENUES</a></li>
+        <li><a href="/#sponsors">SPONSORS</a></li>
+        <li><a href="/#contact">CONTACT</a></li>
+        <li>
+          <a href="/events.html" class="nav-cta">REGISTER</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- ═══════════ EVENTS PAGE HERO ═══════════ -->
+    <section class="events-page-hero">
+      <a href="/" class="back-link">← BACK TO HOME</a>
+      <h1 class="events-page-title">👾 SELECT YOUR EVENT</h1>
+      <p class="events-page-sub">
+        16 events. 2 days. Unlimited XP. Choose your challenge!
+      </p>
+    </section>
+
+    <!-- ═══════════ EVENTS BODY ═══════════ -->
+    <section class="events-page-body">
+      <div class="container">
+        <!-- Filters -->
+        <div class="ep-filters">
+          <button class="filter-btn active" data-filter="all">ALL</button>
+          <button class="filter-btn" data-filter="cultural">CULTURAL</button>
+          <button class="filter-btn" data-filter="technical">TECHNICAL</button>
+          <button class="filter-btn" data-filter="gaming">GAMING</button>
+          <button class="filter-btn" data-filter="workshop">WORKSHOP</button>
+        </div>
+
+        <!-- Events Grid -->
+        <div class="ep-grid" id="epGrid">
+          <!-- Event 1 -->
+          <div class="ep-card" data-category="workshop">
+            <div class="ep-card-head">
+              <span class="ep-badge workshop">WORKSHOP</span>
+              <span class="ep-prize free">FREE</span>
+            </div>
+            <h3>Web Dev Workshop</h3>
+            <p class="desc">
+              Level up your coding skills in this hands-on web development
+              bootcamp. Build real projects, learn modern frameworks, and get
+              mentored by pros.
+            </p>
+            <div class="details">
+              <span>📅 March 23, 2026</span>
+              <span>⏰ 9:30 AM</span>
+            </div>
+            <a href="#" class="card-btn">PRESS START →</a>
+          </div>
+
+          <!-- Event 2 -->
+          <div class="ep-card" data-category="cultural">
+            <div class="ep-card-head">
+              <span class="ep-badge cultural">CULTURAL</span>
+              <span class="ep-prize">₹10K PRIZE</span>
+            </div>
+            <h3>MX - DY (Persona)</h3>
+            <p class="desc">
+              The ultimate personality showdown — charisma, talent, and style
+              collide. Walk the stage, own the spotlight, claim the crown.
+            </p>
+            <div class="details">
+              <span>📅 March 22, 2026</span>
+              <span>💰 Reg: ₹150</span>
+            </div>
+            <a href="#" class="card-btn">PRESS START →</a>
+          </div>
+
+          <!-- Event 3 -->
+          <div class="ep-card" data-category="cultural">
+            <div class="ep-card-head">
+              <span class="ep-badge cultural">CULTURAL</span>
+              <span class="ep-prize">₹40K PRIZE</span>
+            </div>
+            <h3>La Couture</h3>
+            <p class="desc">
+              A spectacular fashion extravaganza — walk the ramp, own the stage.
+              Kerala's biggest college fashion show with massive prizes.
+            </p>
+            <div class="details">
+              <span>📅 March 22, 2026</span>
+              <span>💰 Reg: ₹150/head</span>
+            </div>
+            <a href="#" class="card-btn">PRESS START →</a>
+          </div>
+
+          <!-- Event 4 -->
+          <div class="ep-card" data-category="cultural">
+            <div class="ep-card-head">
+              <span class="ep-badge cultural">CULTURAL</span>
+              <span class="ep-prize">₹3K PRIZE</span>
+            </div>
+            <h3>Bloomer</h3>
+            <p class="desc">
+              Think you can talk without making sense? Blunder your way to
+              glory! A hilarious improv comedy event that rewards quick
+              thinking.
+            </p>
+            <div class="details">
+              <span>📅 March 23, 2026</span>
+              <span>💰 Reg: ₹150</span>
+            </div>
+            <a href="#" class="card-btn">PRESS START →</a>
+          </div>
+
+          <!-- Event 5 -->
+          <div class="ep-card" data-category="cultural">
+            <div class="ep-card-head">
+              <span class="ep-badge cultural">CULTURAL</span>
+              <span class="ep-prize">₹5K PRIZE</span>
+            </div>
+            <h3>Beat The Spot</h3>
+            <p class="desc">
+              Spot choreography challenge — hear the beat, own the floor, no
+              prep needed! Pure freestyle dance energy.
+            </p>
+            <div class="details">
+              <span>📅 March 22, 2026</span>
+              <span>💰 Reg: ₹150</span>
+            </div>
+            <a href="#" class="card-btn">PRESS START →</a>
+          </div>
+
+          <!-- Event 6 -->
+          <div class="ep-card" data-category="cultural">
+            <div class="ep-card-head">
+              <span class="ep-badge cultural">CULTURAL</span>
+              <span class="ep-prize">PRIZES TBD</span>
+            </div>
+            <h3>Groove (Solo Dance)</h3>
+            <p class="desc">
+              Solo dance showdown — light up the stage with your moves! Show the
+              world your style, grace, and raw energy.
+            </p>
+            <div class="details">
+              <span>📅 March 22, 2026</span>
+              <span>💰 Reg: ₹100</span>
+            </div>
+            <a href="#" class="card-btn">PRESS START →</a>
+          </div>
+
+          <!-- Event 7 -->
+          <div class="ep-card" data-category="cultural">
+            <div class="ep-card-head">
+              <span class="ep-badge cultural">CULTURAL</span>
+              <span class="ep-prize">₹5K PRIZE</span>
+            </div>
+            <h3>El Duo (Duet Dance)</h3>
+            <p class="desc">
+              Partner up and dominate the dance floor with synchronized moves!
+              Chemistry, rhythm, and teamwork win this battle.
+            </p>
+            <div class="details">
+              <span>📅 March 22, 2026</span>
+              <span>💰 Reg: ₹200</span>
+            </div>
+            <a href="#" class="card-btn">PRESS START →</a>
+          </div>
+
+          <!-- Event 8 -->
+          <div class="ep-card" data-category="cultural">
+            <div class="ep-card-head">
+              <span class="ep-badge cultural">CULTURAL</span>
+              <span class="ep-prize">₹5K PRIZE</span>
+            </div>
+            <h3>One Mic Stand</h3>
+            <p class="desc">
+              Got jokes? Grab the mic and prove you're the funniest in the
+              arena! Stand-up comedy at its finest.
+            </p>
+            <div class="details">
+              <span>📅 March 22, 2026</span>
+              <span>💰 Reg: ₹150</span>
+            </div>
+            <a href="#" class="card-btn">PRESS START →</a>
+          </div>
+
+          <!-- Event 9 -->
+          <div class="ep-card" data-category="cultural">
+            <div class="ep-card-head">
+              <span class="ep-badge cultural">CULTURAL</span>
+              <span class="ep-prize">₹4K PRIZE</span>
+            </div>
+            <h3>JAM (Just A Minute)</h3>
+            <p class="desc">
+              Talk fast, think faster — 60 seconds to impress the judges! The
+              classic rapid-fire speaking competition.
+            </p>
+            <div class="details">
+              <span>📅 March 22, 2026</span>
+              <span>💰 Reg: ₹100</span>
+            </div>
+            <a href="#" class="card-btn">PRESS START →</a>
+          </div>
+
+          <!-- Event 10 -->
+          <div class="ep-card" data-category="technical">
+            <div class="ep-card-head">
+              <span class="ep-badge technical">TECHNICAL</span>
+              <span class="ep-prize">₹10K PRIZE</span>
+            </div>
+            <h3>Campus Ambassador</h3>
+            <p class="desc">
+              Represent your campus — lead, network, and earn exclusive rewards!
+              Become the face of DY'26 at your college.
+            </p>
+            <div class="details">
+              <span>📅 Open Registration</span>
+              <span>🏆 Top Prizes</span>
+            </div>
+            <a href="#" class="card-btn">PRESS START →</a>
+          </div>
+
+          <!-- Event 11 -->
+          <div class="ep-card" data-category="gaming">
+            <div class="ep-card-head">
+              <span class="ep-badge gaming">GAMING</span>
+              <span class="ep-prize">₹2.5K PRIZE</span>
+            </div>
+            <h3>BGMI Tournament</h3>
+            <p class="desc">
+              Squad up and battle for the chicken dinner in this epic
+              tournament! Multi-round elimination for mobile gaming supremacy.
+            </p>
+            <div class="details">
+              <span>📅 March 22-23</span>
+              <span>💰 Reg: ₹100/squad</span>
+            </div>
+            <a href="#" class="card-btn">PRESS START →</a>
+          </div>
+
+          <!-- Event 12 -->
+          <div class="ep-card" data-category="gaming">
+            <div class="ep-card-head">
+              <span class="ep-badge gaming">GAMING</span>
+              <span class="ep-prize">₹3K PRIZE</span>
+            </div>
+            <h3>Valorant</h3>
+            <p class="desc">
+              5v5 tactical shooter showdown — prove your aim and strategy! LAN
+              tournament with competitive brackets.
+            </p>
+            <div class="details">
+              <span>📅 March 22-23</span>
+              <span>💰 Reg: ₹300/team</span>
+            </div>
+            <a href="#" class="card-btn">PRESS START →</a>
+          </div>
+
+          <!-- Event 13 -->
+          <div class="ep-card" data-category="gaming">
+            <div class="ep-card-head">
+              <span class="ep-badge gaming">GAMING</span>
+              <span class="ep-prize">₹3K PRIZE</span>
+            </div>
+            <h3>Call of Duty</h3>
+            <p class="desc">
+              Gear up soldiers! The ultimate FPS battleground awaits. Team-based
+              combat in intense elimination rounds.
+            </p>
+            <div class="details">
+              <span>📅 March 22-23</span>
+              <span>💰 Reg: ₹300/team</span>
+            </div>
+            <a href="#" class="card-btn">PRESS START →</a>
+          </div>
+
+          <!-- Event 14 -->
+          <div class="ep-card" data-category="gaming">
+            <div class="ep-card-head">
+              <span class="ep-badge gaming">GAMING</span>
+              <span class="ep-prize">PRIZES TBD</span>
+            </div>
+            <h3>e-Football</h3>
+            <p class="desc">
+              Virtual football battle — score goals, win glory on the digital
+              pitch! 1v1 matches with knockout progression.
+            </p>
+            <div class="details">
+              <span>📅 March 22-23</span>
+              <span>💰 Reg: ₹50</span>
+            </div>
+            <a href="#" class="card-btn">PRESS START →</a>
+          </div>
+
+          <!-- Event 15 -->
+          <div class="ep-card" data-category="cultural">
+            <div class="ep-card-head">
+              <span class="ep-badge cultural">CULTURAL</span>
+              <span class="ep-prize">PRIZES TBD</span>
+            </div>
+            <h3>Battle of Bands</h3>
+            <p class="desc">
+              Unleash your inner rockstar — bands compete for the ultimate
+              crown! Original and cover performances welcome.
+            </p>
+            <div class="details">
+              <span>📅 March 22, 2026</span>
+              <span>💰 Reg: ₹150/head</span>
+            </div>
+            <a href="#" class="card-btn">PRESS START →</a>
+          </div>
+
+          <!-- Event 16 -->
+          <div class="ep-card" data-category="technical">
+            <div class="ep-card-head">
+              <span class="ep-badge technical">TECHNICAL</span>
+              <span class="ep-prize">₹50K+ PRIZES</span>
+            </div>
+            <h3>Innovation Zone</h3>
+            <p class="desc">
+              Build, hack, innovate — engineering challenges with massive prize
+              pools! Multi-round hackathon with mentoring sessions.
+            </p>
+            <div class="details">
+              <span>📅 March 22-23</span>
+              <span>🏆 Multiple Rounds</span>
+            </div>
+            <a href="#" class="card-btn">PRESS START →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="ep-footer">
+      <a href="/">← BACK TO HOME</a>
+      <p
+        style="
+          font-family: var(--font-pixel);
+          font-size: 8px;
+          color: var(--text-secondary);
+          margin-top: 16px;
+          letter-spacing: 2px;
+        "
+      >
+        © 2026 DAKSHA YANTHRA · COLLEGE OF ENGINEERING ATTINGAL
+      </p>
+    </footer>
+
+    <!-- Floating Ghosts -->
+    <div class="floating-ghosts" id="floatingGhosts" aria-hidden="true"></div>
+
+    <script>
+      // ── Navbar scroll effect ──
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        navbar.classList.toggle("scrolled", window.scrollY > 50);
+      });
+
+      // ── Hamburger menu ──
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.getElementById("navLinks");
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navLinks.classList.toggle("open");
+      });
+
+      // ── Event Filter ──
+      const filterBtns = document.querySelectorAll(".filter-btn");
+      const epCards = document.querySelectorAll(".ep-card");
+
+      filterBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          filterBtns.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          const filter = btn.dataset.filter;
+
+          epCards.forEach((card) => {
+            if (filter === "all" || card.dataset.category === filter) {
+              card.classList.remove("hidden");
+            } else {
+              card.classList.add("hidden");
+            }
+          });
+        });
+      });
+
+      // ── GSAP Scroll Reveal ──
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray(".ep-card").forEach((card, i) => {
+        gsap.from(card, {
+          scrollTrigger: { trigger: card, start: "top 90%" },
+          y: 40,
+          opacity: 0,
+          duration: 0.6,
+          delay: i * 0.05,
+        });
+      });
+
+      // ── Floating Ghosts ──
+      const ghostContainer = document.getElementById("floatingGhosts");
+      const ghostColors = ["#ff0000", "#ffb8ff", "#00ffff", "#ffb852"];
+      function spawnGhost() {
+        const ghost = document.createElement("div");
+        ghost.style.cssText = `
+          position:fixed; width:20px; height:24px;
+          border-radius:50% 50% 0 0; opacity:0.12;
+          pointer-events:none; z-index:1;
+          background:${ghostColors[Math.floor(Math.random() * 4)]};
+          left:${Math.random() * 100}vw; bottom:-30px;
+        `;
+        ghostContainer.appendChild(ghost);
+        gsap.to(ghost, {
+          y: -window.innerHeight - 60,
+          x: (Math.random() - 0.5) * 100,
+          duration: 8 + Math.random() * 6,
+          ease: "none",
+          onComplete: () => ghost.remove(),
+        });
+      }
+      setInterval(spawnGhost, 3000);
+    </script>
+  </body>
+</html>
