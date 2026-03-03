@@ -102,6 +102,13 @@ a:hover {
     opacity: 0;
   }
 }
+
+.dydt{
+    bottom: 5px;
+    left: 303px;
+    position: fixed;
+}
+
 .blink {
   animation: blink 1s step-end infinite;
 }
@@ -110,15 +117,13 @@ a:hover {
   0%,
   100% {
     text-shadow:
-      0 0 10px var(--pac-yellow),
-      0 0 20px var(--pac-yellow),
-      0 0 40px var(--pac-yellow);
+      0 0 4px rgba(255, 230, 0, 0.6),
+      0 0 10px rgba(255, 230, 0, 0.3);
   }
   50% {
     text-shadow:
-      0 0 5px var(--pac-yellow),
-      0 0 10px var(--pac-yellow),
-      0 0 20px var(--pac-yellow);
+      0 0 2px rgba(255, 230, 0, 0.4),
+      0 0 6px rgba(255, 230, 0, 0.2);
   }
 }
 
@@ -166,6 +171,12 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.nav-logo-img {
+  width: 28px;
+  height: 28px;
+  filter: drop-shadow(0 0 4px var(--pac-yellow)) brightness(1.1) sepia(1) saturate(5) hue-rotate(15deg);
 }
 
 .pac-icon {
@@ -330,10 +341,8 @@ a:hover {
   font-size: clamp(28px, 5vw, 56px);
   color: var(--pac-yellow);
   text-shadow:
-    0 0 10px var(--pac-yellow),
-    0 0 30px var(--pac-yellow),
-    0 0 60px rgba(255, 230, 0, 0.5),
-    0 0 100px rgba(255, 230, 0, 0.3);
+    0 0 4px rgba(255, 230, 0, 0.5),
+    0 0 12px rgba(255, 230, 0, 0.25);
   margin-bottom: 16px;
   line-height: 1.3;
   animation:
@@ -1272,25 +1281,32 @@ a:hover {
 .social-links {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  margin-top: 8px;
+  gap: 16px;
+  margin-top: 12px;
 }
 
 .social-link {
-  font-family: var(--font-pixel);
-  font-size: 10px;
-  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
   border: 2px solid var(--maze-blue);
-  border-radius: 4px;
+  border-radius: 50%;
   color: var(--text-secondary) !important;
   transition: all 0.3s ease;
+}
+
+.social-link svg {
+  width: 20px;
+  height: 40px;
 }
 
 .social-link:hover {
   border-color: var(--pac-yellow);
   color: var(--pac-yellow) !important;
-  box-shadow: 0 0 12px rgba(255, 230, 0, 0.2);
-  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(255, 230, 0, 0.25);
+  transform: translateY(-3px) scale(1.1);
 }
 
 /* ═══════════════════════════════════════
@@ -1311,7 +1327,17 @@ a:hover {
   font-size: 16px;
   color: var(--pac-yellow);
   margin-bottom: 24px;
-  text-shadow: 0 0 10px var(--pac-yellow);
+  text-shadow: 0 0 6px rgba(255, 230, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.footer-logo-img {
+  width: 32px;
+  height: 32px;
+  filter: drop-shadow(0 0 4px var(--pac-yellow)) brightness(1.1) sepia(1) saturate(5) hue-rotate(15deg);
 }
 
 .footer-links {
