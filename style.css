@@ -477,27 +477,15 @@ a:hover {
   height: 32px;
   background: var(--pac-yellow);
   border-radius: 50%;
-  position: relative;
-}
-
-.pacman::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50%;
-  height: 50%;
-  background: var(--arcade-bg);
-  transform-origin: bottom left;
-  animation: pacMouth 0.3s steps(2) infinite;
+  animation: pacMouth 0.3s infinite alternate;
 }
 
 @keyframes pacMouth {
   0% {
-    transform: rotate(0deg);
+    clip-path: polygon(100% 74%, 50% 50%, 100% 26%, 100% 0, 0 0, 0 100%, 100% 100%);
   }
-  50% {
-    transform: rotate(35deg);
+  100% {
+    clip-path: polygon(100% 50%, 50% 50%, 100% 50%, 100% 0, 0 0, 0 100%, 100% 100%);
   }
 }
 
@@ -1856,7 +1844,7 @@ a:hover {
   }
 
   .pacman-chase {
-    transform: scale(0.7);
+    scale: 0.7;
   }
 
   /* Countdown */
