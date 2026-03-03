@@ -1771,6 +1771,65 @@ a:hover {
     flex-direction: column;
     gap: 12px;
   }
+
+  /* Countdown */
+  .countdown {
+    gap: 8px;
+    margin: 20px 0 28px;
+  }
+  .countdown-block {
+    padding: 10px 12px;
+    min-width: 56px;
+  }
+  .countdown-num {
+    font-size: 20px;
+  }
+  .countdown-label {
+    font-size: 6px;
+  }
+  .countdown-sep {
+    font-size: 18px;
+  }
+
+  /* Hero logo */
+  .hero-logo {
+    width: 200px;
+    height: 200px;
+  }
+
+  /* Events marquee */
+  .event-marquee-card {
+    padding: 16px 20px;
+    min-width: 180px;
+  }
+  .event-marquee-card h3 {
+    font-size: 10px;
+  }
+  .btn-view-events {
+    font-size: 11px;
+    padding: 14px 30px;
+  }
+
+  /* Venue map */
+  .map-frame iframe {
+    height: 300px;
+  }
+  .map-address {
+    font-size: 8px;
+  }
+
+  /* Social links */
+  .social-link {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Footer logo */
+  .footer-logo {
+    font-size: 14px;
+    flex-direction: column;
+    gap: 8px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1798,5 +1857,85 @@ a:hover {
 
   .pacman-chase {
     transform: scale(0.7);
+  }
+
+  /* Countdown */
+  .countdown {
+    gap: 6px;
+    margin: 16px 0 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .countdown-block {
+    padding: 8px 10px;
+    min-width: 50px;
+  }
+  .countdown-num {
+    font-size: 16px;
+  }
+  .countdown-label {
+    font-size: 5px;
+    letter-spacing: 1px;
+  }
+  .countdown-sep {
+    font-size: 14px;
+  }
+
+  /* Hero logo */
+  .hero-logo {
+    width: 150px;
+    height: 150px;
+  }
+
+  /* Events marquee */
+  .event-marquee-card {
+    padding: 14px 16px;
+    min-width: 160px;
+  }
+  .event-marquee-card h3 {
+    font-size: 9px;
+  }
+  .event-marquee-card p {
+    font-size: 8px;
+  }
+  .marquee-cat {
+    font-size: 6px;
+  }
+  .btn-view-events {
+    font-size: 10px;
+    padding: 12px 24px;
+  }
+
+  /* Venue map */
+  .venue-map-wrapper {
+    margin-top: 40px;
+  }
+  .map-frame iframe {
+    height: 220px;
+  }
+  .map-heading {
+    font-size: 11px;
+  }
+  .map-address {
+    font-size: 7px;
+    padding: 0 12px;
+  }
+
+  /* Social links */
+  .social-links {
+    gap: 10px;
+  }
+  .social-link {
+    width: 36px;
+    height: 36px;
+  }
+  .social-link svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Contact grid */
+  .contact-card {
+    padding: 20px 16px;
   }
 }
