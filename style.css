@@ -173,6 +173,30 @@ a:hover {
   gap: 8px;
 }
 
+.hero-title-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.hero-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 280px;
+  height: 280px;
+  opacity: 0.12;
+  filter: brightness(1.2) sepia(1) saturate(3) hue-rotate(15deg);
+  z-index: 0;
+  pointer-events: none;
+  animation: fadeInDown 0.8s 0.4s forwards, logoPulse 6s ease-in-out infinite;
+}
+
+@keyframes logoPulse {
+  0%, 100% { opacity: 0.12; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.18; transform: translate(-50%, -50%) scale(1.04); }
+}
+
 .nav-logo-img {
   width: 28px;
   height: 28px;
@@ -454,7 +478,6 @@ a:hover {
   background: var(--pac-yellow);
   border-radius: 50%;
   position: relative;
-  animation: pacmanEat 0.3s steps(2) infinite;
 }
 
 .pacman::before {
