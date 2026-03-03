@@ -486,6 +486,45 @@ function initKonamiCode() {
   }
 }
 
+// ── Countdown Timer ──
+function initCountdown() {
+  const target = new Date("2026-03-22T09:00:00+05:30").getTime();
+  const daysEl = document.getElementById("cd-days");
+  const hoursEl = document.getElementById("cd-hours");
+  const minsEl = document.getElementById("cd-mins");
+  const secsEl = document.getElementById("cd-secs");
+  if (!daysEl) return;
+
+  function update() {
+    const now = Date.now();
+    const diff = target - now;
+
+    if (diff <= 0) {
+      daysEl.textContent = "00";
+      hoursEl.textContent = "00";
+      minsEl.textContent = "00";
+      secsEl.textContent = "00";
+      document.querySelector(".countdown-label")?.closest(".countdown")
+        ?.insertAdjacentHTML("afterend", '<p style="font-family:var(--font-pixel);font-size:12px;color:#00ff00;text-shadow:0 0 10px #00ff00;text-align:center;margin-top:8px;letter-spacing:3px;">🎮 GAME ON!</p>');
+      return;
+    }
+
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+    daysEl.textContent = String(d).padStart(2, "0");
+    hoursEl.textContent = String(h).padStart(2, "0");
+    minsEl.textContent = String(m).padStart(2, "0");
+    secsEl.textContent = String(s).padStart(2, "0");
+
+    requestAnimationFrame(() => setTimeout(update, 1000));
+  }
+
+  update();
+}
+
 // ── Initialize Everything ──
 document.addEventListener("DOMContentLoaded", () => {
   initMazeCanvas();
@@ -498,4 +537,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initCursorTrail();
   initCoinEffect();
   initKonamiCode();
+  initCountdown();
 });
