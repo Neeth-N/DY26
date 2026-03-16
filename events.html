@@ -8,7 +8,7 @@
       name="description"
       content="Browse all events at Daksha Yanthra 2026 — Cultural, Technical, Gaming, and Workshops. Register now!"
     />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="public/favicon.svg" type="image/svg+xml" />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -92,7 +92,7 @@
 
       .ep-poster-wrapper {
         width: 100%;
-        aspect-ratio: 1;
+        aspect-ratio: 1600 / 1600;
         overflow: hidden;
         border-radius: 6px;
         margin-bottom: 16px;
@@ -102,7 +102,7 @@
       .ep-poster {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
         transition: transform 0.4s ease;
       }
 
@@ -299,7 +299,7 @@
     <!-- ═══════════ NAVIGATION ═══════════ -->
     <nav class="navbar" id="navbar">
       <a href="/" class="nav-logo">
-        <img src="/logo.svg" alt="DY Logo" class="nav-logo-img" /> DY'26
+        <img src="public/logo.svg" alt="DY Logo" class="nav-logo-img" /> DY'26
       </a>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
